@@ -7,8 +7,8 @@ public class HomeController : Controller
 {
     public async Task<IActionResult> Index()
     {
-        using var http = new HttpClient();
-        var result = await http.GetFromJsonAsync<IEnumerable<ProductModel>>("https://localhost:7226/api/products");
-        return View(result);
+        //using var http = new HttpClient();
+        //var result = await http.GetFromJsonAsync<IEnumerable<ProductModel>>("https://localhost:7226/api/products");
+        return View();
     }
 }

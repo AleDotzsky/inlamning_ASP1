@@ -1,15 +1,24 @@
-﻿<section class="collection-grid">
+﻿@model IEnumerable<ProductModel>
+@{
+	var count = 0;
+}
+
+<section class="collection-grid">
 	<div class="container">
 		<div class="title">@ViewData["CollectionTitle"]</div>
 		<div class="item-collection">
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
-			<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" />
+			
+			@foreach(var item in Model)
+			{
+				if (count < 8)
+				{
+					<partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" model="@item" />
+					count++;
+				}
+				else
+					break;
+
+			}
 		</div>
 	</div>
 </section>

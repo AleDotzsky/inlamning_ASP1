@@ -1,4 +1,5 @@
-﻿using API_Fixxo.Models.DTO;
+﻿using API_Fixxo.Helpers.Filters;
+using API_Fixxo.Models.DTO;
 using API_Fixxo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,15 +11,14 @@ namespace API_Fixxo.Controllers
 	public class ProductsController : ControllerBase
 	{
 		private readonly ProductRepository _productRepo;
-		private readonly CategoryRepository _categoryRepo;
 
-		public ProductsController(ProductRepository productRepo, CategoryRepository categoryRepo)
+		public ProductsController(ProductRepository productRepo)
 		{
 			_productRepo = productRepo;
-			_categoryRepo = categoryRepo;
 		}
 
 
+		//[UseApiKey]
 		[HttpGet]
 		public async Task<IActionResult> GetAllProductsAsync()
 		{

@@ -20,11 +20,14 @@ namespace API_Fixxo.Repositories
 
 		public async Task<IEnumerable<ProductHttpResponse>> GetAllProductsAsync()
 		{
-			var items = await _context.Products.Include(p => p.Category).ToListAsync();
+			var items = await _context.Products.Include(x=> x.Category).ToListAsync();
+			//var categories = await _context.Categories.ToListAsync();
 			var products = new List<ProductHttpResponse>();
 
 			foreach (var item in items)
 			{
+				//var category = categories.FirstOrDefault(c => c.CategoryId == item.CategoryId);
+				//item.Category = category!;
 				products.Add(item);
 			}
 
