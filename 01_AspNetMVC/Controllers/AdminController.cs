@@ -87,7 +87,7 @@ namespace _01_AspNetMVC.Controllers
 
 		public IActionResult NormalUser()
         {
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
