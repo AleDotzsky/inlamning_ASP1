@@ -3,6 +3,7 @@ using API_Fixxo.Models.DTO;
 using API_Fixxo.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace API_Fixxo.Controllers
 {
@@ -18,7 +19,7 @@ namespace API_Fixxo.Controllers
 		}
 
 
-		//[UseApiKey]
+		[UseApiKey]
 		[HttpGet]
 		public async Task<IActionResult> GetAllProductsAsync()
 		{
@@ -26,13 +27,29 @@ namespace API_Fixxo.Controllers
 			return Ok(products);
 		}
 
-		[HttpGet("tag/{tagName}")]
+        [UseApiKey]
+        [HttpGet("tag/{tagName}")]
 		public async Task<IActionResult> GetByTagAsync(string tagName)
 		{
 			return Ok(await _productRepo.GetByTagAsync(tagName));
 		}
 
-		[HttpPost]
+        [UseApiKey]
+        [HttpGet("{productId}")]
+        public async Task<IActionResult> GetByIdAsync(int productId)
+        {
+			var product = await _productRepo.GetByIdAsync(productId);
+
+            if (product != null)
+			{
+                return Ok(product);
+            }
+
+            return NotFound();
+        }
+
+        [UseApiKey]
+        [HttpPost]
 		public async Task<IActionResult> CreateAsync(ProductHttpRequest req)
 		{
 			if(ModelState.IsValid)
@@ -47,6 +64,21 @@ namespace API_Fixxo.Controllers
 
 			return BadRequest();
 
+		}
+
+		[UseApiKey]
+		[HttpPost("delete/{productId}")]
+		public async Task<IActionResult> DeleteByIdAsync(int productId)
+		{
+			var result = await _productRepo.DeleteByIdAsync(productId);
+			if (result == true)
+			{
+				return Ok();
+			}
+			else
+			{
+				return BadRequest();
+			}
 		}
 	}
 }

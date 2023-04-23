@@ -6,11 +6,14 @@
 
 		<div id="menu" class="">
 			<nav class="menu-links links">
-				<a class="link" href="/">
+				<a class="link" asp-controller="Home" asp-action="Index" > 
 					Home
 				</a>
-				<a class="link" href="/contacts">
+				<a class="link" asp-controller="Contact" asp-action="Index">
 					Contacts
+				</a>
+				<a class="link" asp-controller="Admin" asp-action="Index">
+					Profile
 				</a>
 			</nav>
 
@@ -24,10 +27,10 @@
 				<a class="link" href="/favorites">
 					<i class="fa-regular fa-heart"></i>
 				</a>
-				<a class="link" href="/cart">
+				<a class="link" href="/favorites>
 					<i class="fa-regular fa-bag-shopping"></i>
 				</a>
-				<a class="link ms-5" href="/account">
+				<a class="link ms-5" asp-controller="Auth" asp-action="Login">
 					<i class="fa-regular fa-user"></i>
 				</a>
 			</nav>

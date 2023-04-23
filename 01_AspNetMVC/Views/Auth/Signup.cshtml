@@ -1,0 +1,44 @@
+﻿@model SignUpViewModel
+
+<section class="contact-form m-5 d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="card">
+            <div class="card-body d-flex flex-column align-items-center">
+                <h2 class="text-center mb-4">Sign up</h2>
+                <form method="post" class="d-flex flex-column align-items-center">
+                    <div asp-validation-summary="ModelOnly"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <small><span asp-validation-for="FirstName" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <small><span asp-validation-for="LastName" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <small><span asp-validation-for="Email" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <small><span asp-validation-for="Password" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label"></label>
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <small><span asp-validation-for="ConfirmPassword" class="text-danger"></span></small>
+                    </div>
+                    <button class="btn-theme mt-3" type="submit">Sign up</button>
+                </form>
+            </div>
+            <div class="menu-link text-center mb-4">
+                Already have an account? <a asp-controller="Auth" asp-action="Login" class="link">Login</a>
+            </div>
+        </div>
+    </div>
+</section>

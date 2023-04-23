@@ -1,6 +1,8 @@
 ﻿using API_Fixxo.Contexts;
 using API_Fixxo.Models.DTO;
 using API_Fixxo.Models.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API_Fixxo.Repositories
@@ -9,25 +11,20 @@ namespace API_Fixxo.Repositories
 	{
 
 		private readonly DataContext _context;
-		private readonly CategoryRepository _categoryRepo;
 
 
-		public ProductRepository(DataContext context, CategoryRepository categoryRepo)
+		public ProductRepository(DataContext context)
 		{
 			_context = context;
-			_categoryRepo = categoryRepo;
 		}
 
 		public async Task<IEnumerable<ProductHttpResponse>> GetAllProductsAsync()
 		{
 			var items = await _context.Products.Include(x=> x.Category).ToListAsync();
-			//var categories = await _context.Categories.ToListAsync();
 			var products = new List<ProductHttpResponse>();
 
 			foreach (var item in items)
 			{
-				//var category = categories.FirstOrDefault(c => c.CategoryId == item.CategoryId);
-				//item.Category = category!;
 				products.Add(item);
 			}
 
@@ -47,8 +44,32 @@ namespace API_Fixxo.Repositories
 			return products;
 		}
 
-		public async Task<ProductHttpResponse> CreateAsync(ProductEntity entity)
+        public async Task<ProductHttpResponse> GetByIdAsync(int id)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+
+            return product!;
+        }
+
+        public async Task<bool> DeleteByIdAsync(int id)
+        {
+			try
+			{
+                var product = await _context.Products.FirstOrDefaultAsync(x => x.ProductId == id);
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+				return true;
+            }
+			catch
+			{
+				return false;
+			}
+            
+        }
+
+        public async Task<ProductHttpResponse> CreateAsync(ProductEntity entity)
 		{
+			entity.CreatedDate = DateTime.Now;
 			_context.Products.Add(entity);
 			await _context.SaveChangesAsync();
 			return entity;

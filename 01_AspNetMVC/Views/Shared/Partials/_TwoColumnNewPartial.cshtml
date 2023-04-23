@@ -1,0 +1,27 @@
+﻿@model List<ProductModel>
+
+@{
+    var count = 0;
+}
+<section class="collection-twocolumns">
+    <div class="column bg-gray">
+        <div class="content">
+            <h1>2 FOR USD $29</h1>
+            <button class="btn-white">NEW PRODUCTS</button>
+        </div>
+    </div>
+    <div class="column item-collection">
+        @foreach (var item in Model)
+        {
+            if (count < 6)
+            {
+                <partial name="~/Views/Shared/Partials/_CollectionItemPartial.cshtml" model="@item" />
+                count++;
+            }
+            else
+                break;
+
+        }
+    </div>
+</section>
+

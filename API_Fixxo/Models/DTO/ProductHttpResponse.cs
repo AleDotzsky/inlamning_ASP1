@@ -16,8 +16,8 @@ namespace API_Fixxo.Models.DTO
 		public decimal Price { get; set; }
 		public string ImageUrl { get; set; } = null!;
 		public string Tag { get; set; } = null!;
-
-		public int CategoryId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CategoryId { get; set; }
 		public CategoryEntity Category { get; set; } = null!;
 	}
 }

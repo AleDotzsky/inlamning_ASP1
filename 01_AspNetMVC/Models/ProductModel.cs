@@ -12,7 +12,8 @@ namespace _01_AspNetMVC.Models
 		public decimal Price { get; set; }
 		public string ImageUrl { get; set; } = null!;
 		public string Tag { get; set; } = null!;
-		public int CategoryId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CategoryId { get; set; }
 		public CategoryModel Category { get; set; } = null!;
 	}
 }

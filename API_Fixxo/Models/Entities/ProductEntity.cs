@@ -17,7 +17,8 @@ namespace API_Fixxo.Models.Entities
 		public decimal Price { get; set; }
         public string ImageUrl { get; set; } = null!;
         public string Tag { get; set; } = null!;
-		public int CategoryId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public int CategoryId { get; set; }
         public CategoryEntity Category { get; set; } = null!;
 
         public static implicit operator ProductHttpResponse(ProductEntity entity)
@@ -31,6 +32,7 @@ namespace API_Fixxo.Models.Entities
                 Price = entity.Price,
                 ImageUrl = entity.ImageUrl,
                 Tag = entity.Tag,
+                CreatedDate = entity.CreatedDate,
                 CategoryId = entity.CategoryId,
                 Category = entity.Category,
             };

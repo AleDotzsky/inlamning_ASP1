@@ -2,9 +2,16 @@
 
 @{
 	ViewData["CollectionTitle"] = "Featured Products";
-}
 
-<partial name="~/Views/Shared/Partials/_ShowcasePartial.cshtml" model="Model" />
-<partial name="~/Views/Shared/Partials/_CollectionPartial.cshtml" model="Model" />
-<partial name="~/Views/Shared/Partials/_SpecialOffersPartial.cshtml" model="Model" />
-<partial name="~/Views/Shared/Partials/_TwoColumnCollectionPartial.cshtml" model="Model" />
+	var featuredItems = Model.Where(p => p.Tag == "Featured").OrderByDescending(p => p.CreatedDate).ToList();
+	var newItems = Model.Where(p => p.Tag == "New").ToList();
+	var popularItems = Model.Where(p => p.Tag == "Popular").ToList();
+
+	
+}
+<partial name="~/Views/Shared/Partials/_ShowcasePartial.cshtml" />
+<partial name="~/Views/Shared/Partials/_CollectionPartial.cshtml" model="featuredItems" />
+<partial name="~/Views/Shared/Partials/_SpecialOffersPartial.cshtml" />
+<partial name="~/Views/Shared/Partials/_TwoColumnNewPartial.cshtml" model="newItems" />
+<partial name="~/Views/Shared/Partials/_TwoColumnPopularPartial.cshtml" model="popularItems" />
+

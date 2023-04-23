@@ -1,0 +1,64 @@
+﻿@model ProductViewModel
+
+<section class="contact-form m-5 d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="card">
+            <div class="card-body d-flex flex-column align-items-center">
+                <h2 class="text-center mb-4">Add product</h2>
+                <div class="menu-link text-center mb-4">
+                    Want to remove a product? <a asp-controller="Admin" asp-action="AdminDelete" class="link">Remove products</a>
+                </div>
+                <form method="post" class="d-flex flex-column align-items-center">
+                    <div asp-validation-summary="ModelOnly"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" type="text" class="form-control" />
+                        <small><span asp-validation-for="Title" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Description" class="form-label"></label>
+                        <input asp-for="Description" type="text" class="form-control" />
+                        <small><span asp-validation-for="Description" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Rating" class="form-label"></label>
+                        <input asp-for="Rating" type="number" class="form-control" />
+                        <small><span asp-validation-for="Rating" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Price" class="form-label"></label>
+                        <input asp-for="Price" type="number" class="form-control" />
+                        <small><span asp-validation-for="Price" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ImageUrl" class="form-label"></label>
+                        <input asp-for="ImageUrl" type="text" class="form-control" />
+                        <small><span asp-validation-for="ImageUrl" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Tag" class="form-label"></label>
+                        <select asp-for="Tag" class="form-control">
+                            <option value="New">New</option>
+                            <option value="Featured">Featured</option>
+                            <option value="Popular">Popular</option>
+                        </select>
+                        <small><span asp-validation-for="Tag" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CategoryId" class="form-label"></label>
+                        <select asp-for="CategoryId" class="form-control">
+                            <option value="1">Coats</option>
+                            <option value="2">Shirts</option>
+                            <option value="3">Shoes</option>
+                            <option value="4">Electronics</option>
+                        </select>
+                        <small><span asp-validation-for="CategoryId" class="text-danger"></span></small>
+                    </div>
+                    <button class="btn-theme mt-3" type="submit">Add product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+

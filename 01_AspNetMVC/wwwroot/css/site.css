@@ -727,7 +727,7 @@ header .icons {
 footer {
     font-family: "Poppins",sans-serif;
     padding: 30px;
-    background-color: #292929;
+    background-color: gray;
     color: #aeaeae
 }
 
@@ -735,4 +735,131 @@ footer .container {
     display: flex;
     justify-content: center;
     align-items: center
+}
+.breadcrumb {
+    margin-top: 30px;
+}
+
+    .breadcrumb ul {
+        list-style: none;
+        margin: 0 0 20px 0;
+        padding: 0;
+    }
+
+    .breadcrumb .menu-link {
+        color: #222529;
+        text-decoration: none;
+    }
+
+        .breadcrumb .menu-link:hover {
+            color: #ff7373;
+            text-decoration: underline;
+        }
+
+    .breadcrumb .active {
+        color: #ff7373;
+    }
+
+    .breadcrumb ul > li {
+        display: inline-block;
+        font-weight: 500;
+    }
+
+        .breadcrumb ul > li + li::before {
+            content: "> ";
+            color: #222529;
+        }
+.google-maps iframe {
+    width: 100%;
+    height: 320px;
+    border: 0;
+}
+
+.contact-form {
+    margin-top: 70px;
+}
+
+    .contact-form h1 {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .contact-form form {
+        margin-top: 40px;
+        margin-bottom: 100px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: "name"
+            "email"
+            "comments"
+            "button";
+        gap: 20px;
+    }
+
+        .contact-form form .error {
+            font-size: 0.9em;
+            padding: 5px;
+            color: #ff7373;
+        }
+
+        .contact-form form input,
+        .contact-form form textarea {
+            width: 100%;
+            padding: 18px 20px;
+            border: 1px solid rgba(112,112,112, 0.4);
+        }
+
+        .contact-form form textarea {
+            height: 140px;
+            resize: none;
+        }
+
+        .contact-form form button {
+            grid-area: button;
+        }
+
+        .contact-form form .contact-form-name {
+            grid-area: name;
+        }
+
+        .contact-form form .contact-form-email {
+            grid-area: email;
+        }
+
+        .contact-form form .contact-form-comments {
+            grid-area: comments;
+        }
+
+@media (min-width: 768px) {
+    .contact-form form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "name email"
+            "comments comments"
+            "button empty";
+    }
+}
+
+@media (min-width: 992px) {
+    .contact-form form button {
+        width: 70%;
+    }
+}
+
+.label-left {
+    display: inline-block;
+    width: 70px;
+    text-align: left;
+    margin-right: 10px;
+}
+
+.price {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+
+.input-field {
+    width: 100%;
 }

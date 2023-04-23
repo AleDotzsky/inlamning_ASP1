@@ -1,0 +1,29 @@
+﻿@model SignInViewModel
+
+<section class="contact-form m-5 d-flex align-items-center justify-content-center">
+    <div class="container">
+        <div class="card">
+            <div class="card-body d-flex flex-column align-items-center">
+                <h2 class="text-center mb-4">Login</h2>
+                <form method="post" class="d-flex flex-column align-items-center">
+                    <div asp-validation-summary="ModelOnly"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <small><span asp-validation-for="Email" class="text-danger"></span></small>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <small><span asp-validation-for="Password" class="text-danger"></span></small>
+                    </div>
+                    <button class="btn-theme mt-3" type="submit">Log in</button>
+                </form>
+            </div>
+            <div class="menu-link text-center mb-4">
+                Already have an account? <a asp-controller="Auth" asp-action="Signup" class="link">Signup</a>
+            </div>
+        </div>
+    </div>
+</section>

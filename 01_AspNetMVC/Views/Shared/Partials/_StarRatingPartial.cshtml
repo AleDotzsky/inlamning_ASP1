@@ -1,7 +1,18 @@
-﻿<div class="star-rating">
-	<i class="fa-sharp fa-star fa-solid"></i>
-	<i class="fa-sharp fa-star fa-solid"></i>
-	<i class="fa-sharp fa-star fa-solid"></i>
-	<i class="fa-sharp fa-star fa-regular"></i>
-	<i class="fa-sharp fa-star fa-regular"></i>
+﻿@model ProductModel
+
+<div class="star-rating">
+	@{
+		var count = 0;
+		for (int i = 0; i < Model.Rating; i++)
+		{
+			<i class="fa-sharp fa-star fa-solid"></i>
+			count++;
+		}
+		while (count < 5)
+		{
+			<i class="fa-sharp fa-star fa-regular"></i>
+			count++;
+		}
+		
+	}
 </div>

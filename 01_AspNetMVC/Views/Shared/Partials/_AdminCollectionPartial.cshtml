@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ProductModel>
+
+
+<div class="menu-link text-center mb-4">
+	Want to add a product? <a asp-controller="Admin" asp-action="Admin" class="link">Add products</a>
+</div>
+<section class="collection-grid">
+	<div class="container">
+		<div class="title">@ViewData["Remove"]</div>
+		<div class="item-collection">
+
+			@foreach (var item in Model)
+			{
+				<partial name="~/Views/Shared/Partials/_AdminCollectionItemPartial.cshtml" model="@item" />
+			}
+		</div>
+	</div>
+</section>
